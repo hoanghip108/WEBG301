@@ -1,4 +1,4 @@
-@extends('PuppyWebsiteMaster.loginMaster')
+@extends('toywebsiteMaster.loginMaster')
 
 @section('main')
 

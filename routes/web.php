@@ -1,7 +1,7 @@
 <?php
 
 use App\Http\Controllers\AdminController;
-use App\Http\Controllers\PuppyController;
+use App\Http\Controllers\ToyController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
@@ -9,22 +9,22 @@ use App\Http\Controllers\UserAuthController;
 
 
 Route::prefix('homepage')->group(function () {
-    Route::prefix('puppyManager')->group(function () {
-        Route::get('/', [PuppyController::class, 'index'])->name('puppy.index')->middleware('loginAdmin');
-        Route::get('/create', [PuppyController::class, 'create'])->name('puppy.create');
-        Route::post('/create', [PuppyController::class, 'store'])->name('puppy.store');
-        Route::get('/createBreed', [PuppyController::class, 'createBreed'])->name('puppy.createBreed');
-        Route::post('/createBreed', [PuppyController::class, 'storeBreed'])->name('puppy.storeBreed');
-        Route::get('/update/{id}', [PuppyController::class, 'edit'])->name('puppy.edit');
-        Route::post('/update/{id}', [PuppyController::class, 'update'])->name('puppy.update');
-        Route::get('/delete/{id}', [PuppyController::class, 'confirm'])->name('puppy.confirm');
-        Route::post('/delete/{id}', [PuppyController::class, 'delete'])->name('puppy.delete');
-        Route::get('/breed', [PuppyController::class, 'GetAllBreed'])->name('puppy.breed');
-        Route::get('/breedUpdate/{id}', [PuppyController::class, 'breedUpdate'])->name('breed.update');
-        Route::post('/breedUpdate/{id}', [PuppyController::class, 'breedEdit'])->name('breed.Edit');
-        Route::get('/search', [PuppyController::class, 'SearchPet'])->name('FindPetByName');
-        Route::get('/breedDelete/{id}', [PuppyController::class, 'breedConfirm'])->name('breed.confirm');
-        Route::post('/breedDelete/{id}', [PuppyController::class, 'breedDelete'])->name('breed.delete');
+    Route::prefix('toy-manager')->group(function () {
+        Route::get('/', [ToyController::class, 'index'])->name('toy.index')->middleware('loginAdmin');
+        Route::get('/create', [ToyController::class, 'create'])->name('toy.create');
+        Route::post('/create', [ToyController::class, 'store'])->name('toy.store');
+        Route::get('/create-category', [ToyController::class, 'createCategory'])->name('toy.createCategory');
+        Route::post('/create-category', [ToyController::class, 'storeCategory'])->name('toy.storeCategory');
+        Route::get('/update/{id}', [ToyController::class, 'edit'])->name('toy.edit');
+        Route::post('/update/{id}', [ToyController::class, 'update'])->name('toy.update');
+        Route::get('/delete/{id}', [ToyController::class, 'confirm'])->name('toy.confirm');
+        Route::post('/delete/{id}', [ToyController::class, 'delete'])->name('toy.delete');
+        Route::get('/product-categories', [ToyController::class, 'getCategories'])->name('toy.getCategories');
+        Route::get('/product-categories/{id}', [ToyController::class, 'categoryUpdate'])->name('category.update');
+        Route::post('/product-categories/{id}', [ToyController::class, 'categoryEdit'])->name('category.Edit');
+        Route::get('/search', [ToyController::class, 'SearchProduct'])->name('FindProductByName');
+        Route::get('/categories-delete/{id}', [ToyController::class, 'categoryConfirm'])->name('product_categories.confirm');
+        Route::post('/categories-delete/{id}', [ToyController::class, 'breedDelete'])->name('product_categories.delete');
     });
 
     Route::prefix('customerManager')->group(function () {
@@ -44,11 +44,10 @@ Route::prefix('homepage')->group(function () {
 
 Route::prefix('/')->group(function () {
     Route::get('/', [Usercontroller::class, 'index'])->name('user.view');
-    Route::get('/search', [UserController::class, 'ClientSearchPet'])->name('user.FindPetByName');
-    Route::get('/Detail/{id}', [Usercontroller::class, 'GetPetById'])->name('Pet.Detail');
-    Route::get('/Filter/{id}', [UserController::class, 'FilterPet'])->name('FilterPet');
-
-    Route::get('/Filter/{id}', [UserController::class, 'FilterPet'])->name('FilterPet');
+    Route::get('/search', [UserController::class, 'ClientSearchPet'])->name('user.FindProductByName');
+    Route::get('/Detail/{id}', [Usercontroller::class, 'GetProductById'])->name('Product.Detail');
+    Route::get('/Filter/{id}', [UserController::class, 'FilterProduct'])->name('FilterProduct');
+    // Route::get('/Filter/{id}', [UserController::class, 'FilterProduct'])->name('FilterProduct');
     Route::get('/AboutUs', [UserController::class, 'AboutUs'])->name('user.aboutus');
     Route::get('/Tip', [UserController::class, 'Tip'])->name('user.tip');
     Route::get('/gallery', [UserController::class, 'gallery'])->name('user.gallery');

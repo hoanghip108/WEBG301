@@ -6,26 +6,22 @@ use Illuminate\Support\Facades\DB;
 
 class User
 {
-    public static function GetAllPet()
+    public static function GetAllProducts()
     {
-        $sql = "select * from puppy join breeds on puppy.breedsID =  breeds.id  ";
+        $sql = "select * from products join product_categories on products.product_category_id =  product_categories.id  ";
         return DB::select($sql);
-//        return DB::table('puppy')->join('breeds', 'puppy.breedsID', '=', 'breeds.id')
-//            ->select('puppy.*',
-//                'breeds.*')->get();
     }
 
-    public static function GetPetByID($id)
+    public static function GetProductById($id)
     {
-        $sql = "select * from puppy join breeds on puppy.breedsID = breeds.id where Pid = $id";
-        return DB::select($sql);
-//        return DB::table('puppy')->where('Pid', '=', $id)->get();
+        error_log($id);
+        $sql = "select * from products join product_categories on products.product_category_id = product_categories.id where products.p_id = ?";
+        return DB::select($sql, [$id]);
     }
-    public static function GetPetByBreed($id)
+    public static function GetProductByCategory($id)
     {
-        $sql = "select * from puppy join breeds on puppy.breedsID = breeds.id where breeds.id = $id";
-        return DB::select($sql);
-//        return DB::table('puppy')->where('Pid', '=', $id)->get();
+        $sql = "select * from products join product_categories on products.product_category_id = product_categories.id where product_categories.id = ?";
+        return DB::select($sql, [$id]);
     }
     public static function GetImagePet(){
         $image = "select * from puppy";

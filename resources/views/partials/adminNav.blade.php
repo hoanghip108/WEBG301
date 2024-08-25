@@ -3,7 +3,7 @@
     <div class="container-fluid">
 
         <!-- LOGO -->
-        <a href="{{Route('puppy.index')}}" class="topnav-logo">
+        <a href="{{Route('toy.index')}}" class="topnav-logo">
                                 <span class="topnav-logo-lg">
                                     <img src="{{asset('images/pecaden.png')}}" alt="logo" height="40px">
                                 </span>
@@ -22,7 +22,7 @@
                      x-placement="bottom-start">
                     <form class="p-3">
                         <input type="text" class="form-control" placeholder="Search ..."
-                               aria-label="Recipient's username" name="petname">
+                               aria-label="Recipient's username" name="product_name">
                     </form>
                 </div>
             </li>
@@ -61,10 +61,10 @@
             </li>
         </ul>
         <div class="app-search dropdown">
-            <form action="{{route('FindPetByName')}}" method="get">
+            <form action="{{route('FindProductByName')}}" method="get">
                 <div class="input-group">
                     <input type="text" class="form-control" placeholder="Search..." id="top-search"
-                           style="border-radius: 15px; margin-right: 15px" name="petname">
+                           style="border-radius: 15px; margin-right: 15px" name="product_name">
                     <span class="mdi mdi-magnify search-icon"></span>
                     <div class="input-group-append">
                         <button class="btn btn-primary" type="submit" style="border-radius: 15px">Search</button>

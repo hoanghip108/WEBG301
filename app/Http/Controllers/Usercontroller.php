@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Repository\PuppyRepos;
+use App\Repository\ToyRepos;
 use App\Repository\User;
 use Illuminate\Http\Request;
 
@@ -10,45 +10,44 @@ class Usercontroller extends Controller
 {
     public function index()
     {
-        $pets = User::GetAllPet();
-        $breeds = PuppyRepos::GetAllBreeds();
+        $products = User::GetAllProducts();
+        $product_categories = ToyRepos::GetCategories();
         return view('Userview.index', [
-            'pets' => $pets,
-            'breed' => $breeds
+            'products' => $products,
+            'product_categories' => $product_categories
         ]);
 
     }
 
-    public function FilterPet($id)
+    public function FilterProduct($id)
     {
-        $breeds = PuppyRepos::GetAllBreeds();
-        $pet = User::GetPetByBreed($id);
-        return view('Userview.FilterPet', [
-            'pet' => $pet,
-            'breed' => $breeds
+        $product_categories = ToyRepos::GetCategories();
+        $products = User::GetProductByCategory($id);
+        return view('Userview.FilterProduct', [
+            'products' => $products,
+            'product_categories' => $product_categories
         ]);
     }
 
-    public function GetPetById($id)
+    public function GetProductById($id)
     {
-        $breeds = PuppyRepos::GetAllBreeds();
-        $pets = User::GetPetByID($id);
+        $product_categories = ToyRepos::GetCategories();
+        $products = User::GetProductById($id);
         return view('UserView.Detail',
             [
-                'pet' => $pets,
-                'breed' => $breeds
+                'products' => $products,
+                'product_categories' => $product_categories
             ]);
     }
 
     public function ClientSearchPet()
     {
-        $breeds = PuppyRepos::GetAllBreeds();
-        $pet = $_GET['petname'];
-        $result = PuppyRepos::FindPetByName($pet);
-//        dd($result);
+        $product_categories = ToyRepos::GetCategories();
+        $product_name = $_GET['product_name'];
+        $result = ToyRepos::FindProductByName($product_name);
         return view('UserView.index', [
-            'pets' => $result,
-            'breed' => $breeds
+            'products' => $result,
+            'product_categories' => $product_categories
         ]);
     }
     public function AboutUs(){
@@ -58,9 +57,9 @@ class Usercontroller extends Controller
         return view('UserView.tips');
     }
     public function gallery(){
-        $pets = User::GetImagePet();
+        $products = ToyRepos::GetAllToys();
         return view('UserView.gallery', [
-            'pets' => $pets
+            'products' => $products
         ]);
     }
 }

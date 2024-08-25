@@ -13,7 +13,7 @@ class RegisterController extends Controller
     public function userAccount()
     {
         $users = UserAuth::GetAllAccount();
-        return view('puppywebsite.accountUser.userAccount', [
+        return view('toywebsite.accountUser.userAccount', [
             'users' => $users,
         ]);
     }
@@ -52,7 +52,7 @@ class RegisterController extends Controller
     public function editCustomer($id)
     {
         $users = UserAuth::GetUserByID($id);
-        return view('puppywebsite.accountUser.updateUser', [
+        return view('toywebsite.accountUser.updateUser', [
             'users' => $users,
         ]);
     }
@@ -70,13 +70,13 @@ class RegisterController extends Controller
             'password' => $request->input('password')
         ];
         UserAuth::update($id, $user);
-        return redirect()->route('puppy.index');
+        return redirect()->route('toy.index');
     }
 
     public function confirmCustomer($id)
     {
         $user = UserAuth::GetUserByID($id);
-        return view('puppywebsite.accountUser.confirmCustomer', [
+        return view('toywebsite.accountUser.confirmCustomer', [
             'user' => $user
         ]);
     }
@@ -84,7 +84,7 @@ class RegisterController extends Controller
     public function deleteCustomer($id)
     {
         UserAuth::delete($id);
-        return redirect()->Route('puppy.index');
+        return redirect()->Route('toy.index');
     }
 
     private function validation($request)

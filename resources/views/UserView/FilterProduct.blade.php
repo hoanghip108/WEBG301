@@ -47,22 +47,24 @@
     </div>
     <div class="container-fluid mm-active">
         <div class="wrapper mm-show">
+            {{--            @include('UserView.Partial.leftnav')--}}
             <div class="content-page">
                 <div class="content">
                     <div class="row">
                         @foreach($products as $each)
-                            <div class="col-md-6 col-xl-3" >
-                                <!-- project card -->
-                                <div class="card d-block text-dark" style="width: 300px; height: 300px; margin: 50px 50px; box-shadow: 0 10px 15px 0 rgba(0, 0, 0, 0.25),
+                            <div class="col-md-6 col-xl-3">
+                                <div class="card d-block text-dark" style="width: 300px; height: 350px; margin: 50px 50px; box-shadow: 0 10px 15px 0 rgba(0, 0, 0, 0.25),
   0 5px 15px 0 rgba(0, 0, 0, 0.12)">
+                                    <!-- project card -->
                                     <!-- project-thumbnail -->
                                     <img class="card-img-top" src="{{$each->img}}"
                                          alt="project image cap" style="height: 100%; width:100%">
 
-                                    <div class="card-body position-relative" style="padding-left: unset; padding-right: unset; margin-bottom: 9px ">
+                                    <div class="card-body position-relative"
+                                         style="padding-left: unset; padding-right: unset; margin-bottom: 9px ">
                                         <!-- project title-->
                                         <h4 class="mt-0">
-                                            <a href="{{Route('Product.Detail',['id'=>$each->p_id])}}"
+                                            <a href="{{Route('Product.Detail',['id'=>$each->id])}}"
                                                class="text-title">{{$each->name}}</a>
                                         </h4>
 
@@ -72,7 +74,6 @@
                                                 <i class=" dripicons-star"></i>
                                                 <b>{{$each->product_category_id}}</b>
                                             </span>
-
                                             <span class="text-nowrap">
                                                 <i class="uil-meh-alt"></i>
                                                 <b>{{$each->description}}</b>
@@ -97,8 +98,6 @@
             </div>
         </div>
     </div>
-
-
 
     @include('UserView.Partial.footer')
 @endsection

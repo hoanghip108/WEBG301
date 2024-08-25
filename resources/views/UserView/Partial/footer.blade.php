@@ -5,7 +5,7 @@
         <!-- Section: Social media -->
         <section class="mb-4">
             <!-- Facebook -->
-            <a class="btn btn-outline-light btn-floating m-1" href="http://facebook.com/hoanghip108" role="button target='_blank'"
+            <a class="btn btn-outline-light btn-floating m-1" href="https://www.facebook.com/profile.php?id=100048322204453" role="button target='_blank'"
             ><i class="fab fa-facebook-f"></i
                 >
             </a>
@@ -21,7 +21,7 @@
                 ></a>
 
             <!-- Instagram -->
-            <a class="btn btn-outline-light btn-floating m-1" href="https://www.instagram.com/hoang.hip.108/" role="button"
+            <a class="btn btn-outline-light btn-floating m-1" href="https://www.facebook.com/profile.php?id=100048322204453" role="button"
             ><i class="fab fa-instagram"></i
                 ></a>
 
@@ -31,7 +31,7 @@
                 ></a>
 
             <!-- Github -->
-            <a class="btn btn-outline-light btn-floating m-1" href="https://github.com/hoanghip108" role="button"
+            <a class="btn btn-outline-light btn-floating m-1" href="https://www.facebook.com/profile.php?id=100048322204453" role="button"
             ><i class="fab fa-github"></i
                 ></a>
         </section>
@@ -55,7 +55,7 @@
 
         <section class="mb-4">
             <p>
-                To get the latest on pet adoption and pet care, sign up to hear from us.
+                To get the latest on toys update, sign up to hear from us.
             </p>
         </section>
 

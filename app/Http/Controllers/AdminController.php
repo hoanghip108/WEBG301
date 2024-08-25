@@ -12,7 +12,7 @@ class AdminController extends Controller
     public function myAccount($username)
     {
         $admin = AdminRepos::GetAdminByUsername($username);
-        return view('puppywebsite.accountAdmin.myAccount', [
+        return view('toywebsite.accountAdmin.myAccount', [
             'admin' => $admin[0],
         ]);
     }
@@ -20,7 +20,7 @@ class AdminController extends Controller
     public function adminAccount()
     {
         $admin = AdminRepos::GetAllAccount();
-        return view('puppywebsite.accountAdmin.adminAccount', [
+        return view('toywebsite.accountAdmin.adminAccount', [
             'admin' => $admin,
         ]);
     }
@@ -36,7 +36,7 @@ class AdminController extends Controller
     public function editAdmin($username)
     {
         $admin = AdminRepos::GetAdminByUsername($username);
-        return view('puppywebsite.accountAdmin.updateAdmin', [
+        return view('toywebsite.accountAdmin.updateAdmin', [
             'admin' => $admin[0],
         ]);
     }
@@ -55,7 +55,7 @@ class AdminController extends Controller
 
         ];
         AdminRepos::Update($username, $admin);
-        return redirect()->route('puppy.index');
+        return redirect()->route('toy.index');
     }
 
     private function validation($request)

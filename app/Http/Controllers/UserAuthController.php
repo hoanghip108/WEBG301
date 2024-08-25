@@ -31,7 +31,7 @@ class UserAuthController extends Controller
         $checklogin = UserAuth::login($username, $password);
         if ($checklogin > 0) {
             Session::put('username', $request->input('username'));
-            return redirect()->Route('puppy.index');
+            return redirect()->Route('toy.index');
         } else return redirect()->back()->withErrors(['msg'=>'Wrong username or password'])->withInput();
 
     }

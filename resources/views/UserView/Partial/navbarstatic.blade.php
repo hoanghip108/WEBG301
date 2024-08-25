@@ -22,17 +22,17 @@
                      x-placement="bottom-start">
                     <form class="p-3">
                         <input type="text" class="form-control" placeholder="Search ..."
-                               aria-label="Recipient's username" name="petname">
+                               aria-label="Recipient's username" name="product_name">
                     </form>
                 </div>
             </li>
 
         </ul>
         <div class="app-search dropdown">
-            <form action="{{route('user.FindPetByName')}}" method="get">
+            <form action="{{route('user.FindProductByName')}}" method="get">
                 <div class="input-group">
                     <input type="text" class="form-control" placeholder="Search..." id="top-search"
-                           style="border-radius: 15px; margin-right: 15px" name="petname">
+                           style="border-radius: 15px; margin-right: 15px" name="product_name">
                     <span class="mdi mdi-magnify search-icon"></span>
                     <div class="input-group-append">
                         <button class="btn btn-primary" type="submit" style="border-radius: 15px">Search</button>

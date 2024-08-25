@@ -24,9 +24,9 @@
                                 <li class="side-nav-title side-nav-item">Navigation</li>
 
                                 <li class="side-nav-item">
-                                    <a href="{{route('puppy.index')}}" class="side-nav-link">
+                                    <a href="{{route('toy.index')}}" class="side-nav-link">
                                         <i class="uil-home-alt"></i>
-                                        <span> Puppy Website </span>
+                                        <span> Toy store </span>
                                     </a>
                                 </li>
 
@@ -46,9 +46,9 @@
                                     </a>
                                 </li>
                                 <li class="side-nav-item">
-                                    <a href="{{route('puppy.breed')}}" class="side-nav-link">
+                                    <a href="{{route('toy.getCategories')}}" class="side-nav-link">
                                         <i class="mdi mdi-account-convert-outline"></i>
-                                        <span> Breed </span>
+                                        <span> Toy categories </span>
                                     </a>
                                 </li>
 {{--                                <li class="side-nav-item">--}}
