@@ -24,6 +24,7 @@
                         <tr>
                             <th>ID</th>
                             <th>Name</th>
+                            <th>Price</th>
                             <th>Description</th>
                             <th>Category</th>
                             <th>Image</th>
@@ -39,6 +40,9 @@
                                 </td>
                                 <td>
                                     {{$each->name}}
+                                </td>
+                                <td>
+                                    {{$each->price}}
                                 </td>
                                 <td>{{$each->description}}</td>
                                 <!-- <td>{{$each->img}}</td> -->

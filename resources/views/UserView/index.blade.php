@@ -65,7 +65,10 @@
                                             <a href="{{Route('Product.Detail',['id'=>$each->p_id])}}"
                                                class="text-title">{{$each->name}}</a>
                                         </h4>
-
+                                        <h4 class="mt-0">
+                                            <a href="{{Route('Product.Detail',['id'=>$each->p_id])}}"
+                                               class="text-title">${{$each->price}}</a>
+                                        </h4>
                                         <!-- project detail-->
                                         <p class="mb-3">
                                             <span class="pr-2 text-nowrap">

@@ -21,7 +21,8 @@
                         <div class="col-lg-7">
                             <form class="pl-lg-4">
                                 <!-- Product title -->
-                                <h3 class="mt-0">{{$products[0]->name}}</h3>
+                                <h3 class="mt-0">Product: {{$products[0]->name}}</h3>
+                                <h3 class="mt-0">Price:    {{$products[0]->price}}</h3>
                                 <p class="mb-1">Added Date: 25/04/2022</p>
                                 <p class="font-16">
                                     <span class="text-warning mdi mdi-star"></span>
@@ -50,16 +51,29 @@
                                 </div>
 
                                 <!-- Product information -->
-
-
                             </form>
                         </div> <!-- end col -->
                     </div> <!-- end row-->
 
 
                 </div> <!-- end card-body-->
+
             </div> <!-- end card-->
+            <div class="mt-4">
+             <h6 class="font-20">Related products:</h6>
+        </div>
         </div> <!-- end col-->
+
+            @foreach($related_products as $each)
+<tr>
+
+    <td class="table-user">
+        <img src="{{$each->img}}" alt="table-user" style="width:300px;height:300px;margin:50px" class=""/>
+    </td>
+
+</tr>
+@endforeach
+
     </div>
 
 @include('UserView.Partial.footer')

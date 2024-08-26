@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserAuthController;
 
 
-Route::prefix('homepage')->group(function () {
+Route::prefix('admin-side')->group(function () {
     Route::prefix('toy-manager')->group(function () {
         Route::get('/', [ToyController::class, 'index'])->name('toy.index')->middleware('loginAdmin');
         Route::get('/create', [ToyController::class, 'create'])->name('toy.create');
@@ -24,7 +24,7 @@ Route::prefix('homepage')->group(function () {
         Route::post('/product-categories/{id}', [ToyController::class, 'categoryEdit'])->name('category.Edit');
         Route::get('/search', [ToyController::class, 'SearchProduct'])->name('FindProductByName');
         Route::get('/categories-delete/{id}', [ToyController::class, 'categoryConfirm'])->name('product_categories.confirm');
-        Route::post('/categories-delete/{id}', [ToyController::class, 'breedDelete'])->name('product_categories.delete');
+        Route::post('/categories-delete/{id}', [ToyController::class, 'categoryDelete'])->name('product_categories.delete');
     });
 
     Route::prefix('customerManager')->group(function () {

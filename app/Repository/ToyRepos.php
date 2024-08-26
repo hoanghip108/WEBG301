@@ -40,11 +40,12 @@ class ToyRepos
 
     public static function Store($product)
     {
-        $sql = "insert into products (p_id,name,description,img,product_category_id) values (?,?,?,?,?)";
+        $sql = "insert into products (p_id,name,description,price,img,product_category_id) values (?,?,?,?,?,?)";
         DB::insert($sql, [
             $product->id,
             $product->name,
             $product->description,
+            $product->price,
             $product->img,
             $product->product_category_id,
         ]);
@@ -58,16 +59,16 @@ class ToyRepos
 
     public static function Update($id, $product)
     {
-        $sql = "update products set name=?,description=?,img=?,product_category_id=? where id=?";
+        $sql = "update products set name=?,price=?,description=?,img=?,product_category_id=? where p_id=?";
         DB::update($sql,[
             $product->name,
+            $product->price,
             $product->description,
             $product->img,
             $product->product_category_id,
             $id,
         ]);
     }
-
     public static function UpdateCategory($product_categories, $id)
     {
         error_log($product_categories->title);
@@ -78,6 +79,10 @@ class ToyRepos
     public static function Delete($id)
     {
         DB::table('products')->where('p_id', '=', $id)->delete();
+    }
+    public static function categoryDelete($id)
+    {
+        DB::table('product_categories')->where('id', '=', $id)->delete();
     }
 
     public static function DeleteCategory($id)

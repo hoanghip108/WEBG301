@@ -9,7 +9,7 @@
         </ol>
     </nav>
     <h1 class="text-dark" style="font-size: 50px"><strong>Toy Selection Guide for Parents</strong></h1>
-    <h4 class="text-dark" style="margin: 30px 0">Updated: 04-25-2022 | Author: Nguyen Trong Dat</h4>
+    <h4 class="text-dark" style="margin: 30px 0">Updated: 04-25-2022 | Author: Quan Nguyen</h4>
     <div class="row">
         <div class="col-lg-2">
             <div id="list-example" class="list-group sticky-top" style="border: none; padding-top: 30px">

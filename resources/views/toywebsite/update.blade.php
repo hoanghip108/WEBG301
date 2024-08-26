@@ -26,8 +26,18 @@
                                 @enderror
                             </div>
                             <div class="form-group">
+                                <label for="simpleinput">Price</label>
+                                <input type="text" id="simpleinput" class="form-control" name="price"
+                                       value="{{$each->price}}">
+                                @error('price')
+                                <div class="alert alert-warning" role="alert">
+                                    <i class="dripicons-wrong mr-2"></i><strong>{{$message}}</strong>
+                                </div>
+                                @enderror
+                            </div>
+                            <div class="form-group">
                                 <label for="simpleinput">image</label>
-                                <input type="file" id="simpleinput" class="form-control" name="img"
+                                <input type="text" id="simpleinput" class="form-control" name="img"
                                        value="{{$each->img}}">
                                 @error('img')
                                 <div class="alert alert-warning" role="alert">

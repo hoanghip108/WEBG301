@@ -2,6 +2,17 @@
 @section('main')
     @include('partials.adminNav')
     @include('partials.LeftNav')
+    @if (session('error'))
+        <script>
+            if (confirm("{{ session('error') }}")) {
+                // If the user confirms, redirect to the delete route
+                window.location.href = "{{ route('toy.getCategories') }}";
+            } else {
+                // If the user cancels, do nothing or redirect back
+                window.location.href = "{{ route('toy.getCategories') }}";
+            }
+        </script>
+    @endif
     <div class="container-fluid">
         <div class="content-page" style="padding: 0 0 100px 0">
             <h1>categories Management</h1>

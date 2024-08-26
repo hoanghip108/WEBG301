@@ -54,21 +54,6 @@ class ToyController extends Controller
         ]);
     }
 
-    public function breedUpdate($id)
-    {
-
-        $breed = PuppyRepos::GetBreedByID($id);
-        return view('toywebsite.breedDetail', [
-            'breed' => $breed
-        ]);
-    }
-
-    public function breedDelete($id)
-    {
-        ToyRepos::DeleteCategory($id);
-        return redirect()->Route('toy.getCategories');
-    }
-
     public function categoryConfirm($id)
     {
         $product_categories = ToyRepos::GetCategoryById($id);
@@ -84,13 +69,13 @@ class ToyController extends Controller
 
     public function create()
     {
-        error_log('Some message here.');
         $product_categories = ToyRepos::GetCategories();
         return view('toyWebsite.create', [
                 'categories' => $product_categories,
                 'product' => (object)[
                     'id' => '',
                     'name' => '',
+                    'price'=>'',
                     'product_category_id' => '',
                     'img' => '',
                     'description' => '',
@@ -124,19 +109,31 @@ class ToyController extends Controller
 
     public function store(Request $rq)
     {
-
-        // $this->validation($rq)->validate();
+        $this->validateProduct($rq)->validate();
         $product = (object)[
             'id' => Str::uuid(),
             'name' => $rq->input('name'),
+            'price' => $rq->input('price'),
             'description' => $rq->input('description'),
             'img' => $rq->input('img'),
             'product_category_id' => $rq->product_category_id,
         ];
-        ToyRepos::Store($product);
+        $toyRepos = new ToyRepos();
+        $toyRepos->Store($product);
         return redirect()->route('toy.index');
     }
-
+    private function validateProduct($rq)
+    {
+        return Validator::make($rq->all(), [
+            'name' => ['required'],
+            'price' => ['required', 'numeric'],
+            'product_category_id' => ['required'],
+            'img' => ['required'],
+            'description' => ['required'],
+        ], [
+            'price.numeric' => 'The price must be a number.',
+        ]);
+    }
     public function edit($id)
     {
         $products = ToyRepos::GetProductById($id);
@@ -150,10 +147,11 @@ class ToyController extends Controller
 
     public function update(Request $rq, $id)
     {
-        // $this->validation($rq)->validate();
+        $this->validateProduct($rq)->validate();
         $product = (object)[
             'id' => Str::uuid(),
             'name' => $rq->input('name'),
+            'price'=>$rq->input('price'),
             'description' => $rq->input('description'),
             'img' => $rq->input('img'),
             'product_category_id' => $rq->product_category_id,
@@ -195,15 +193,17 @@ class ToyController extends Controller
         ToyRepos::delete($id);
         return redirect()->Route('toy.index');
     }
+public function categoryDelete($id)
+{
+    $hasProducts = ToyRepos::HasProductsInCategory($id);
 
-//    public function searchByName(Request $request){
-//
-//        $pets = [
-//            'name' => $request->input('name'),
-//        ];
-//        PuppyRepos::SearchByName($request);
-//        return view('toywebsite.index', [
-//          'pets' => $pets]);
-//    }
+    if ($hasProducts) {
+        if ($hasProducts) {
+            return redirect()->route('toy.getCategories')->with('error', 'Cannot delete category while it still has products.');
+        }
+    }
 
+    ToyRepos::deleteCategory($id);
+    return redirect()->route('toy.getCategories');
+}
 }

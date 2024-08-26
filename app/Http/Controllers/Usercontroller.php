@@ -32,10 +32,12 @@ class Usercontroller extends Controller
     public function GetProductById($id)
     {
         $product_categories = ToyRepos::GetCategories();
+        $related_products = ToyRepos::GetAllToys();
         $products = User::GetProductById($id);
         return view('UserView.Detail',
             [
                 'products' => $products,
+                'related_products' => $related_products,
                 'product_categories' => $product_categories
             ]);
     }

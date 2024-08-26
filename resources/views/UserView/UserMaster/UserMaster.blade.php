@@ -17,7 +17,7 @@
     <link rel="stylesheet" href="{{asset('css/carousel.css')}}">
     <link rel="shortcut icon" href="{{asset('images/peca.png')}}">
     @yield('css')
-    <title>Peca puppy</title>
+    <title>Peca Toys</title>
 </head>
 <body class="loading" data-layout="detached" data-layout-config='{"leftSidebarCondensed":false,"darkMode":false, "showRightSidebarOnStart": true}'>
 <header>
