@@ -13,12 +13,12 @@
             <div class="content">
                 <div class="container-fluid">
                     <h1>Edit category</h1>
-                    <form action="{{route('category.Edit',['id'=> $product_categories[0]->id])}}" method="post">
+                    <form action="{{route('category.edit',['id'=> $product_categories[0]->id])}}" method="post">
                         @csrf
                         @foreach($product_categories as $each)
                             <div class="form-group">
                                 <label for="simpleinput">category</label>
-                                <input type="text" id="simpleinput" class="form-control" name="category"
+                                <input type="text" id="simpleinput" class="form-control" name="title"
                                        value="{{$each->title}}">
                                 @error('category')
                                 <div class="alert alert-warning" role="alert">

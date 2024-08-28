@@ -37,9 +37,8 @@ class ToyController extends Controller
 
     public function categoryEdit(Request $rq, $id)
     {
-        // $this->validationBreed($rq)->validate();
         $product_categories = [
-            'product_categories' => $rq->product_categories
+            'product_categories' => $rq->input('title')
         ];
         ToyRepos::UpdateCategory($product_categories, $id);
         return redirect()->route('toy.getCategories');
@@ -47,7 +46,6 @@ class ToyController extends Controller
 
     public function categoryUpdate($id)
     {
-
         $product_categories = ToyRepos::GetCategoryById($id);
         return view('toywebsite.categoryDetail', [
             'product_categories' => $product_categories

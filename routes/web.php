@@ -21,7 +21,7 @@ Route::prefix('admin-side')->group(function () {
         Route::post('/delete/{id}', [ToyController::class, 'delete'])->name('toy.delete');
         Route::get('/product-categories', [ToyController::class, 'getCategories'])->name('toy.getCategories');
         Route::get('/product-categories/{id}', [ToyController::class, 'categoryUpdate'])->name('category.update');
-        Route::post('/product-categories/{id}', [ToyController::class, 'categoryEdit'])->name('category.Edit');
+        Route::post('/product-categories/{id}', [ToyController::class, 'categoryEdit'])->name('category.edit');
         Route::get('/search', [ToyController::class, 'SearchProduct'])->name('FindProductByName');
         Route::get('/categories-delete/{id}', [ToyController::class, 'categoryConfirm'])->name('product_categories.confirm');
         Route::post('/categories-delete/{id}', [ToyController::class, 'categoryDelete'])->name('product_categories.delete');

@@ -34,7 +34,6 @@ class ToyRepos
     public static function GetProductById($id)
     {
         $sql = "select * from products where p_id = ?";
-        // dd(DB::select($sql, [$id]));
          return DB::select($sql, [$id]);
     }
 
@@ -71,9 +70,11 @@ class ToyRepos
     }
     public static function UpdateCategory($product_categories, $id)
     {
-        error_log($product_categories->title);
+        // Convert the array to a string
+        $product_categories_str = implode(',', $product_categories);
+
         $sql = "update product_categories set title=? where id=?";
-        DB::update($sql,[$product_categories->title,$id]);
+        DB::update($sql,[$product_categories_str,$id]);
     }
 
     public static function Delete($id)
