@@ -7,7 +7,7 @@ use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 
-class LoginMiddleware
+class ClientLoginMiddleware
 {
     /**
      * Handle an incoming request.
@@ -21,14 +21,13 @@ class LoginMiddleware
         $out = new \Symfony\Component\Console\Output\ConsoleOutput();
         $out->writeln(UserAuth::class);
 
-        if (!Session::has('username')) {
+        if (!Session::has('clientUsername')) {
+            dd(Session::get('clientUsername'));
             $out->writeln('unauthenticated');
-            return redirect()->route('admin.login');
+            return redirect()->route('client.login');
         } else {
-            if(Session::get('role') != 'admin'){
-                return redirect()->route('user.view');
-            }
-            $out->writeln('authenticated: ' . Session::get('username'));
+            dd(Session::get('clientUsername'));
+            $out->writeln('authenticated: ' . Session::get('clientUsername'));
         }
         return $next($request);
     }

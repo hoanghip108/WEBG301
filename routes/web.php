@@ -35,6 +35,8 @@ Route::prefix('admin-side')->group(function () {
         Route::post('/delete/{id}', [RegisterController::class, 'deleteCustomer'])->name('user.delete');
 
     });
+    Route::get('/create', [AdminController::class, 'createAdmin'])->name('admin.create');
+    Route::post('/create', [AdminController::class, 'storeAdmin'])->name('admin.storeAdmin');
     Route::get('/admin', [AdminController::class, 'adminAccount'])->name('admin.account');
     Route::get('/myaccount/{username}', [AdminController::class, 'myAccount'])->name('admin.myaccount');
     Route::get('/update/{username}', [AdminController::class, 'editAdmin'])->name('admin.edit');
@@ -44,6 +46,7 @@ Route::prefix('admin-side')->group(function () {
 
 Route::prefix('/')->group(function () {
     Route::get('/', [Usercontroller::class, 'index'])->name('user.view');
+    Route::get('/my-account/{clientUsername}', [UserAuthController::class, 'myAccount'])->name('client.my-account');
     Route::get('/search', [UserController::class, 'ClientSearchPet'])->name('user.FindProductByName');
     Route::get('/Detail/{id}', [Usercontroller::class, 'GetProductById'])->name('Product.Detail');
     Route::get('/Filter/{id}', [UserController::class, 'FilterProduct'])->name('FilterProduct');
@@ -55,6 +58,8 @@ Route::prefix('/')->group(function () {
 
 
 Route::prefix('userauth')->group(function () {
+    Route::get('/login-client', [UserAuthController::class, 'loginClientIndex']);
+    Route::post('/login-client', [UserAuthController::class, 'loginClient',])->name('client.login');
     Route::get('/login', [UserAuthController::class, 'index']);
     Route::post('/login', [UserAuthController::class, 'login',])->name('admin.login');
     Route::get('/register', [RegisterController::class, 'index',])->name('user.register');

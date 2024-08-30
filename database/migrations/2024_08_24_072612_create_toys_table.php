@@ -34,8 +34,10 @@ class CreateToysTable extends Migration
             $table->string('email');
             $table->string('address');
             $table->string('gender');
+            $table->string('role');
             $table->string('username')->unique();
             $table->string('password');
+
             $table->string('avatar')->nullable();
         });
         Schema::create('admin', function (Blueprint $table) {
@@ -46,6 +48,8 @@ class CreateToysTable extends Migration
             $table->string('gender');
             $table->string('username')->unique();
             $table->string('password');
+            $table->string('avatar')->nullable();
+
         });
     }
 

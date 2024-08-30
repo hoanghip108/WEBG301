@@ -38,20 +38,6 @@
                     @enderror
                 </div>
                 <div class="form-group">
-                    <label for="address" class="form-label">Phone</label>
-                    <input
-                            type="text" name="phone"
-                            class="form-control"
-                            id="address"
-                            value="{{$admin->phone}}">
-                    @error('phone')
-                    <div class="alert alert-warning bg-white text-warning" role="alert">
-                        <strong>{{$message}}</strong>
-                    </div>
-                    @enderror
-                </div>
-
-                <div class="form-group">
                     <label for="example-select">Gender</label>
                     <select name="gender" id="gender" class="form-control">
                         <option value="male">Male</option>

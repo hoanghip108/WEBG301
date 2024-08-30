@@ -13,7 +13,7 @@
             <h1>Admin Account</h1>
             <dl class="row">
                 <dt class="col-sm-3">ID</dt>
-                <dd class="col-sm-9">{{$admin->Aid}}</dd>
+                <dd class="col-sm-9">{{$admin->Cid}}</dd>
 
                 <dt class="col-sm-3">Name</dt>
                 <dd class="col-sm-9">{{$admin->name}}</dd>

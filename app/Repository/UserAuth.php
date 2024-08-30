@@ -25,9 +25,21 @@ class UserAuth
 //    }
     public static function login($username, $password)
     {
-        $sql = "SELECT * FROM admin WHERE username='" . $username . "' AND password='" . sha1($password) . "'";
-        return count(DB::select($sql));
+        $sql = "SELECT * FROM users WHERE username='" . $username . "' AND password='" . sha1($password) . "'";
+        return (DB::select($sql));
 //        return DB::table('admin')->where(['username' => $username, 'password' => md5($password)])->count();
+    }
+    public static function GetUserByUsername($username)
+    {
+        $sql = "SELECT * FROM users WHERE username='" . $username . "'";
+        return DB::select($sql);
+    }
+    public static function loginUser($username, $password)
+    {
+        $sql = "SELECT * FROM users WHERE username='" . $username . "' AND password='" . sha1($password) . "'";
+        $count = count(DB::select($sql));
+        dd($count);
+        return count(DB::select($sql));
     }
     public static function store($users)
     {

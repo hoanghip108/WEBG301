@@ -9,6 +9,35 @@ use Symfony\Component\HttpFoundation\Session\Session;
 
 class AdminController extends Controller
 {
+    public function createAdmin()
+    {
+        return view('toyWebsite.accountAdmin.createAdmin', [
+            'user' => (object) [
+                'name' => '',
+                'phone' => '',
+                'email' => '',
+                'gender' => '',
+                'username' => '',
+                'password' => ''
+            ]
+        ]);
+    }
+    public function storeAdmin(Request $request)
+    {
+
+        $users = [
+            'name' => $request->input('name'),
+            'email' => $request->input('email'),
+            'phone' => $request->input('phone'),
+            'gender' => $request->input('gender'),
+            'username' => $request->input('username'),
+            'password' => $request->input('password')
+        ];
+        // dd($users);
+        AdminRepos::store($users);
+
+        return redirect()->route('admin.account');
+    }
     public function myAccount($username)
     {
         $admin = AdminRepos::GetAdminByUsername($username);
@@ -36,6 +65,7 @@ class AdminController extends Controller
     public function editAdmin($username)
     {
         $admin = AdminRepos::GetAdminByUsername($username);
+        // dd($admin);
         return view('toywebsite.accountAdmin.updateAdmin', [
             'admin' => $admin[0],
         ]);
@@ -43,15 +73,13 @@ class AdminController extends Controller
 
     public function updateAdmin(Request $request, $username)
     {
-        $this->validation($request)->validate();
+
+        // $this->validation($request)->validate();
         $admin = [
-//            'name' => $request->input('name'),
+        //    'name' => $request->input('name'),
             'email' => $request->input('email'),
-            'phone' => $request->input('phone'),
             'gender' => $request->input('gender'),
-//            'username' => $request->input('username'),
             'password' => $request->input('password'),
-//            'username' => $request->input('username'),
 
         ];
         AdminRepos::Update($username, $admin);
@@ -62,7 +90,6 @@ class AdminController extends Controller
     {
         return Validator::make($request->all(), [
             'email' => ['required','email', 'ends_with:@gmail.com'],
-            'phone' => ['required','digits_between:10,11','starts_with:0'],
             'password' => [
                 'required',
                 function ($attribute, $value, $fail) use ($request) {

@@ -1,3 +1,11 @@
+@extends('toywebsiteMaster.ToyMaster')
+@section('css')
+    <link rel="stylesheet" href="{{asset('css/vendor/dataTables.bootstrap4.css')}}">
+    <link rel="stylesheet" href="{{asset('css/vendor/responsive.bootstrap4.css')}}">
+@endsection
+
+
+@section('main')
 <div class="navbar-custom topnav-navbar topnav-navbar-dark" style="position: sticky">
 
     <div class="container-fluid">
@@ -29,14 +37,14 @@
             <li class="dropdown notification-list">
                 <a class="nav-link dropdown-toggle nav-user arrow-none mr-0" data-toggle="dropdown" id="topbar-userdrop"
                    href="#" role="button" aria-haspopup="true" aria-expanded="false">
-                                        <span class="account-user-avatar">
-                                            <img src="https://png.pngtree.com/png-vector/20191101/ourmid/pngtree-cartoon-color-simple-male-avatar-png-image_1934459.jpg" alt="user-image"
+                                        <!-- <span class="account-user-avatar">
+                                            <img src="{{asset('images/me.jpg')}}" alt="user-image"
                                                  class="rounded-circle">
-                                        </span>
+                                        </span> -->
 
                     <span class="account-user-name">
                                                 {{\Illuminate\Support\Facades\Session::has('clientUsername')?
-                        \Illuminate\Support\Facades\Session::get('clientUsername') : ''}}
+                        \Illuminate\Support\Facades\Session::get('clientUsername') : 'Unknow user'}}
                                             <span class="account-position">Unknow user</span>
                                         </span>
                 </a>
@@ -75,7 +83,10 @@
                     </form>
                 </div>
             </li>
-
+{{--            <a href="{{Route('user.register')}}" class="btn mb-2 bg-dark"--}}
+{{--               style="border-radius: 15px; color: white; border-color: white;margin-top: 15px"><i--}}
+{{--                    class="mdi mdi-plus-circle mr-2"></i> Register--}}
+{{--            </a>--}}
         </ul>
         <div class="app-search dropdown">
             <form action="{{route('user.FindProductByName')}}" method="get">
@@ -89,25 +100,6 @@
                 </div>
             </form>
         </div>
-        <ul class="list-unstyled topbar-right-menu float-left mb-0">
-            <li class="dropdown notification-list topbar-dropdown">
-                <a class="nav-link dropdown-toggle arrow-none" data-toggle="dropdown" href="#" role="button"
-                   aria-haspopup="false" aria-expanded="false">
-                    <i class="uil-github"></i>
-                    <span class="align-middle d-none d-sm-inline-block" style="font-size: 17px">Categories</span> <i
-                        class="mdi mdi-chevron-down d-none d-sm-inline-block align-middle"></i>
-                </a>
-                <div class="dropdown-menu dropdown-menu-right dropdown-menu-animated topbar-dropdown-menu">
-                    <!-- item-->
-                    @foreach($product_categories as $each)
-                        <a href="{{Route('FilterProduct',[$each->id])}}" class="dropdown-item notify-item">
-                            <span class="align-middle">{{$each->title}}</span>
-                        </a>
-                    @endforeach
-                </div>
-
-            </li>
-        </ul>
         <ul class="list-unstyled topbar-right-menu float-right mb-0">
             <li class="dropdown notification-list topbar-dropdown">
                 <a href="{{route('user.aboutus')}}" class="nav-link " role="button" style="font-size: 17px; margin: 0 15px"><i class="dripicons-location"></i> About Us</a>
@@ -119,7 +111,10 @@
                 <a href="{{route('user.gallery')}}" class="nav-link dropdown-toggle arrow-none"
                    role="button" style="font-size: 17px; margin: 0 15px"><i class="mdi mdi-dog"></i> Gallery</a>
             </li>
-
+            <li class="dropdown notification-list topbar-dropdown">
+                <a href="{{route('user.register')}}" class="nav-link dropdown-toggle arrow-none"
+                   role="button" style="font-size: 17px; margin: 0 15px"><i class=" mdi mdi-registered-trademark"></i> Register</a>
+            </li>
         </ul>
 
     </div>
@@ -129,3 +124,49 @@
 
 
 
+    <div class="container-fluid">
+        <div class="content-page" style="padding: 0 20px 100px 20px">
+            <h1>My Account</h1>
+            <dl class="row">
+                <dt class="col-sm-3">ID</dt>
+                <dd class="col-sm-9">{{$user[0]->Cid}}</dd>
+
+                <dt class="col-sm-3">Name</dt>
+                <dd class="col-sm-9">{{$user[0]->customer_name}}</dd>
+
+                <dt class="col-sm-3">Email</dt>
+                <dd class="col-sm-9">{{$user[0]->email}}</dd>
+
+                <dt class="col-sm-3">Phone</dt>
+                <dd class="col-sm-9">{{$user[0]->address}}</dd>
+
+                <dt class="col-sm-3">Gender</dt>
+                <dd class="col-sm-9">{{$user[0]->gender}}</dd>
+
+                <dt class="col-sm-3">Username</dt>
+                <dd class="col-sm-9">{{$user[0]->username}}</dd>
+
+            </dl>
+{{--            <button type="button" class="btn btn-info" data-toggle="modal" data-target="#login-modal">Update</button>--}}
+{{--            <div id="login-modal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">--}}
+{{--                <div class="modal-dialog">--}}
+{{--                    <div class="modal-content">--}}
+{{--                        <div class="modal-body">--}}
+{{--                            <form action="{{Route('admin.verify'),Session::get('username')}}" class="pl-3 pr-3" method="post">--}}
+{{--                                <div class="form-group">--}}
+{{--                                    <label for="password1">Password</label>--}}
+{{--                                    <input class="form-control" type="password" required="" id="password1" placeholder="Enter your password" name="pwd">--}}
+{{--                                </div>--}}
+{{--                                <div class="form-group text-center">--}}
+{{--                                    <button class="btn btn-rounded btn-primary" type="submit">Submit</button>--}}
+{{--                                </div>--}}
+
+{{--                            </form>--}}
+
+{{--                        </div>--}}
+{{--                    </div><!-- /.modal-content -->--}}
+{{--                </div><!-- /.modal-dialog -->--}}
+{{--            </div><!-- /.modal -->--}}
+            <a href="{{route('admin.edit', Session::get('username') )}}" class="btn btn-danger mb-2"
+               style="border-radius: 15px; background-color: #0eac5c; border-color: #0eac5c">Edit <i class="mdi mdi-pencil"></i> </a>
+@endsection

@@ -27,15 +27,47 @@ class UserAuthController extends Controller
             $username = $request->input('username');
             $password = $request->input('password');
         }
-
         $checklogin = UserAuth::login($username, $password);
-        if ($checklogin > 0) {
-            Session::put('username', $request->input('username'));
+        $count = count($checklogin);
+        if ($count > 0) {
+            if($checklogin[0]->role !='admin'){
+                Session::put('clientUsername', $checklogin[0]->username);
+            Session::put('role', $checklogin[0]->role);
+            }
+            Session::put('username', $checklogin[0]->username);
+            Session::put('role', $checklogin[0]->role);
             return redirect()->Route('toy.index');
         } else return redirect()->back()->withErrors(['msg'=>'Wrong username or password'])->withInput();
 
     }
+    public function loginClientIndex()
+    {
+        return view('UserAuth.index');
+    }
+    public function loginClient(Request $request)
+    {
+        $validation = $this->checklogin($request);
+        if ($validation->fails()) {
+            return redirect()->back()->withErrors($validation)->withInput();
+        } else {
+            $username = $request->input('username');
+            $password = $request->input('password');
+        }
 
+        $checklogin = UserAuth::loginUser($username, $password);
+
+        if ($checklogin.length() > 0) {
+            Session::put('clientUsername', $request->input('username'));
+            return redirect()->Route('user.view');
+        } else return redirect()->back()->withErrors(['msg'=>'Wrong username or password'])->withInput();
+
+    }
+    public function myAccount($username)
+    {
+        $user = UserAuth::GetUserByUsername($username);
+        // dd($user);
+        return view('UserView.myAccount', ['user' => $user]);
+    }
     public function logout(){
         if (Session::has('username')) {
             Session::forget('username');

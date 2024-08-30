@@ -42,7 +42,8 @@ class RegisterController extends Controller
             'address' => $request->input('address'),
             'gender' => $request->input('gender'),
             'username' => $request->input('username'),
-            'password' => $request->input('password')
+            'password' => sha1($request->input('password')),
+            'role' => 'client'
         ];
         UserAuth::store($users);
 

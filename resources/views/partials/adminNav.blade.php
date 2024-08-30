@@ -30,7 +30,7 @@
                 <a class="nav-link dropdown-toggle nav-user arrow-none mr-0" data-toggle="dropdown" id="topbar-userdrop"
                    href="#" role="button" aria-haspopup="true" aria-expanded="false">
                                         <span class="account-user-avatar">
-                                            <img src="{{asset('images/me.jpg')}}" alt="user-image"
+                                            <img src="https://png.pngtree.com/png-vector/20191101/ourmid/pngtree-cartoon-color-simple-male-avatar-png-image_1934459.jpg" alt="user-image"
                                                  class="rounded-circle">
                                         </span>
 
@@ -68,6 +68,15 @@
                     <span class="mdi mdi-magnify search-icon"></span>
                     <div class="input-group-append">
                         <button class="btn btn-primary" type="submit" style="border-radius: 15px">Search</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="app-search dropdown">
+            <form action="{{route('admin.create')}}" method="get">
+                <div class="input-group">
+                    <div class="input-group-append">
+                        <button class="btn btn-primary" type="submit" style="border-radius: 15px">Create new admin</button>
                     </div>
                 </div>
             </form>
