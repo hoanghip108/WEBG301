@@ -15,14 +15,9 @@
                 <dt class="col-sm-3">ID</dt>
                 <dd class="col-sm-9">{{$admin->Cid}}</dd>
 
-                <dt class="col-sm-3">Name</dt>
-                <dd class="col-sm-9">{{$admin->name}}</dd>
-
                 <dt class="col-sm-3">Email</dt>
                 <dd class="col-sm-9">{{$admin->email}}</dd>
 
-                <dt class="col-sm-3">Phone</dt>
-                <dd class="col-sm-9">{{$admin->phone}}</dd>
 
                 <dt class="col-sm-3">Gender</dt>
                 <dd class="col-sm-9">{{$admin->gender}}</dd>
